@@ -7,10 +7,24 @@
 </head>
 <body>
 
-    <script src="script.js">
-       
-    </script>
+    <script>
 
+        getComputerChoice();
+        
+        function getComputerChoice(){
+            const randomNumber = getRandomInt(0,3);
+            const choices = ["rock","paper","scissors"];
+            console.log(`choices[ramdomNumber] is ${choices[randomNumber]}`);
+            return choices[randomNumber];
+        }
+
+        function getRandomInt(min,max){
+            const minCeiled = Math.ceil(min);
+            const maxFloored = Math.floor(max);
+            return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled)
+    }
+
+    </script>
 
 </body>
 </html>
