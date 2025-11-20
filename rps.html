@@ -10,11 +10,18 @@
     <script>
 
         getComputerChoice();
+        getHumanChoice();
+
+        function getHumanChoice(){
+            const humanChoice = prompt("Choose rock, paper, or scissors:");
+            console.log(`Your Choice: ${humanChoice}`);
+            return humanChoice;
+        }
         
         function getComputerChoice(){
             const randomNumber = getRandomInt(0,3);
             const choices = ["rock","paper","scissors"];
-            console.log(`choices[ramdomNumber] is ${choices[randomNumber]}`);
+            console.log(`Computer's Choice: ${choices[randomNumber]}`);
             return choices[randomNumber];
         }
 
