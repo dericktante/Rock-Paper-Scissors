@@ -4,6 +4,8 @@ function playGame(){
     let computerScore = 0;
 
     function playRound(humanChoice, computerChoice){
+        humanChoice = humanChoice.toLowerCase();
+
         switch(humanChoice){
             case "rock":
                 switch(computerChoice){
@@ -75,9 +77,23 @@ function playGame(){
 playGame();
 
 function getHumanChoice(){
-    const humanChoice = prompt("Choose rock, paper, or scissors:");
+    let humanChoice = prompt("Choose rock, paper, or scissors:");
+    if (humanChoice === null){
+        alert("You must choose rock, paper or scissors.");
+        return getHumanChoice();
+    }
+
+    const response = humanChoice.trim().toLowerCase();
+    if(response === "" ||
+        response !== "rock" &&
+        response !== "paper" &&
+        response !== "scissors"
+    ){
+        alert("Invalid input! Please enter rock, paper, or scissors.");
+        return getHumanChoice();
+    }
     console.log(`Your Choice: ${humanChoice}`);
-    return humanChoice;
+    return response;
 }
 
 function getComputerChoice(){
