@@ -20,6 +20,14 @@ function playGame(){
                         console.log("You Win!");
                         humanScore++;
                         break;
+                    case "lizard":
+                        console.log("You Win!");
+                        humanScore++;
+                        break;
+                    case "spock":
+                        console.log("You Lose!");
+                        computerScore++;
+                        break;  
                 }
                 break;
 
@@ -35,6 +43,14 @@ function playGame(){
                     case "scissors":
                         console.log("You Lose!");
                         computerScore++;
+                        break;
+                    case "lizard":
+                        console.log("You Lose!");
+                        computerScore++;
+                        break;
+                    case "spock":
+                        console.log("You Win!");
+                        humanScore++;
                         break;
                 }
                 break;
@@ -52,8 +68,64 @@ function playGame(){
                     case "scissors":
                         console.log("Tie!");
                         break;
+                    case "lizard":
+                        console.log("You Win!");
+                        humanScore++;
+                        break;
+                    case "spock":
+                        console.log("You Lose!"); 
+                        computerScore++;
+                        break;
                 }
                 break;
+
+            case "lizard":
+                switch (computerChoice) {
+                    case "rock": 
+                        console.log("You Lose! Rock crushes Lizard"); 
+                        computerScore++; 
+                        break;
+                    case "paper": 
+                        console.log("You Win! Lizard eats Paper"); 
+                        humanScore++; 
+                        break;                        
+                    case "scissors": 
+                        console.log("You Lose! Scissors decapitates Lizard"); 
+                        computerScore++;   
+                        break;
+                    case "lizard": 
+                        console.log("Tie!"); 
+                        break;
+                    case "spock": 
+                        console.log("You Win! Lizard poisons Spock"); 
+                        humanScore++; 
+                        break;
+                    }
+                    break;
+        
+                case "spock":
+                    switch (computerChoice) {
+                        case "rock": 
+                            console.log("You Win! Spock vaporizes Rock"); 
+                            humanScore++; 
+                            break;
+                        case "paper": 
+                            console.log("You Lose! Paper disproves Spock"); 
+                            computerScore++; 
+                            break;
+                        case "scissors": 
+                            console.log("You Win! Spock smashes Scissors"); 
+                            humanScore++; 
+                            break;
+                        case "lizard": 
+                            console.log("You Lose! Lizard poisons Spock"); 
+                            computerScore++; 
+                            break;
+                        case "spock": 
+                            console.log("Tie!"); 
+                            break;
+                    }
+                    break;            
         }
         console.log(`score - You: ${humanScore}, Computer: ${computerScore}`);
     }
@@ -77,9 +149,9 @@ function playGame(){
 playGame();
 
 function getHumanChoice(){
-    let humanChoice = prompt("Choose rock, paper, or scissors:");
+    let humanChoice = prompt("Choose rock, paper, scissors, lizard, or spock:");
     if (humanChoice === null){
-        alert("You must choose rock, paper or scissors.");
+        alert("You must choose rock, paper, scissors, lizard, or spock.");
         return getHumanChoice();
     }
 
@@ -87,18 +159,20 @@ function getHumanChoice(){
     if(response === "" ||
         response !== "rock" &&
         response !== "paper" &&
-        response !== "scissors"
+        response !== "scissors" &&
+        response !== "lizard" &&
+        response !== "spock"
     ){
-        alert("Invalid input! Please enter rock, paper, or scissors.");
+        alert("Invalid input! Please enter rock, paper, or scissors, lizard, or spock.");
         return getHumanChoice();
     }
-    console.log(`Your Choice: ${humanChoice}`);
+    console.log(`Your Choice: ${response}`);
     return response;
 }
 
 function getComputerChoice(){
-    const randomNumber = getRandomInt(0,3);
-    const choices = ["rock","paper","scissors"];
+    const randomNumber = getRandomInt(0,5);
+    const choices = ["rock","paper","scissors","lizard","spock"];
     console.log(`Computer's Choice: ${choices[randomNumber]}`);
     return choices[randomNumber];
 }
