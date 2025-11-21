@@ -14,7 +14,8 @@ function playGame(){
                         console.log("You Lose!");
                         computerScore++;
                         break;
-                    case "scissors": console.log("You Win!");
+                    case "scissors": 
+                        console.log("You Win!");
                         humanScore++;
                         break;
                 }
@@ -53,7 +54,6 @@ function playGame(){
                 break;
         }
         console.log(`score - You: ${humanScore}, Computer: ${computerScore}`);
-
     }
 
     for(let i = 0; i < 5; i++){
