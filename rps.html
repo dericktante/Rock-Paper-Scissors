@@ -9,67 +9,81 @@
 
     <script>
 
-        let humanScore = 0;
-        let computerScore = 0;
+        function playGame(){
+        
+            let humanScore = 0;
+            let computerScore = 0;
 
-        const computerSelection = getComputerChoice();
-        const humanSelection = getHumanChoice();
-        playRound(humanSelection,computerSelection);
+            function playRound(humanChoice, computerChoice){
+                switch(humanChoice){
+                    case "rock":
+                        switch(computerChoice){
+                            case "rock":
+                                console.log("Tie!");
+                                break;
+                            case "paper":
+                                console.log("You Lose!");
+                                computerScore++;
+                                break;
+                            case "scissors": console.log("You Win!");
+                                humanScore++;
+                                break;
+                        }
+                        break;
 
-        function playRound(humanChoice, computerChoice){
-            humanChoice = humanChoice.toLowerCase();
+                    case "paper":
+                        switch(computerChoice){
+                            case "rock":
+                                console.log("You Win!");
+                                humanScore++;
+                                break;
+                            case "paper":
+                                console.log("Tie!");
+                                break;
+                            case "scissors":
+                                console.log("You Lose!");
+                                computerScore++;
+                                break;
+                        }
+                        break;
 
-            switch(humanChoice){
-                case "rock":
-                    switch(computerChoice){
-                        case "rock":
-                            console.log("Tie!");
-                            break;
-                        case "paper":
-                            console.log("You Loose!");
-                            computerScore++;
-                            break;
-                        case "scissors": console.log("You Win!");
-                            humanScore++;
-                            break;
-                    }
-                    break;
+                    case "scissors":
+                        switch(computerChoice){
+                            case "rock":
+                                console.log("You Lose!");
+                                computerScore++;
+                                break;
+                            case "paper":
+                                console.log("You Win!");
+                                humanScore++;
+                                break;
+                            case "scissors":
+                                console.log("Tie!");
+                                break;
+                        }
+                        break;
+                }
+                console.log(`score - You: ${humanScore}, Computer: ${computerScore}`);
 
-                case "paper":
-                    switch(computerChoice){
-                        case "rock":
-                            console.log("You Win!");
-                            humanScore++;
-                            break;
-                        case "paper":
-                            console.log("Tie!");
-                            break;
-                        case "scissors":
-                            console.log("You Loose!");
-                            computerScore++;
-                            break;
-                    }
-                    break;
-
-                case "scissors":
-                    switch(computerChoice){
-                        case "rock":
-                            console.log("You Loose!");
-                            computerScore++;
-                            break;
-                        case "paper":
-                            console.log("You Win!");
-                            humanScore++;
-                            break;
-                        case "scissors":
-                            console.log("Tie!");
-                            break;
-                    }
-                    break;
             }
-            console.log(`score - You: ${humanScore}, Computer: ${computerScore}`);
+
+            for(let i = 0; i < 5; i++){
+                const computerSelection = getComputerChoice();
+                const humanSelection = getHumanChoice();
+                playRound(humanSelection,computerSelection);
+                }
+
+                if(humanScore > computerScore){
+                    console.log("You Won the Game");
+                }else if(computerScore > humanScore){
+                    console.log("You Lost! Computer Won the Game");
+                }else{
+                    console.log("It's a tie Game!");
+                }
 
         }
+
+        playGame();
 
         function getHumanChoice(){
             const humanChoice = prompt("Choose rock, paper, or scissors:");
