@@ -10,10 +10,66 @@
     <script>
 
         let humanScore = 0;
-        let ComputerScore = 0;
+        let computerScore = 0;
 
-        getComputerChoice();
-        getHumanChoice();
+        const computerSelection = getComputerChoice();
+        const humanSelection = getHumanChoice();
+        playRound(humanSelection,computerSelection);
+
+        function playRound(humanChoice, computerChoice){
+            humanChoice = humanChoice.toLowerCase();
+
+            switch(humanChoice){
+                case "rock":
+                    switch(computerChoice){
+                        case "rock":
+                            console.log("Tie!");
+                            break;
+                        case "paper":
+                            console.log("You Loose!");
+                            computerScore++;
+                            break;
+                        case "scissors": console.log("You Win!");
+                            humanScore++;
+                            break;
+                    }
+                    break;
+
+                case "paper":
+                    switch(computerChoice){
+                        case "rock":
+                            console.log("You Win!");
+                            humanScore++;
+                            break;
+                        case "paper":
+                            console.log("Tie!");
+                            break;
+                        case "scissors":
+                            console.log("You Loose!");
+                            computerScore++;
+                            break;
+                    }
+                    break;
+
+                case "scissors":
+                    switch(computerChoice){
+                        case "rock":
+                            console.log("You Loose!");
+                            computerScore++;
+                            break;
+                        case "paper":
+                            console.log("You Win!");
+                            humanScore++;
+                            break;
+                        case "scissors":
+                            console.log("Tie!");
+                            break;
+                    }
+                    break;
+            }
+            console.log(`score - You: ${humanScore}, Computer: ${computerScore}`);
+
+        }
 
         function getHumanChoice(){
             const humanChoice = prompt("Choose rock, paper, or scissors:");
